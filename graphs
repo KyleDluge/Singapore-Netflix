@@ -1,0 +1,16 @@
+import pandas as pd
+
+df = pd.read_csv('/kaggle/input/netflix-shows/netflix_titles.csv')
+
+new_df = df.loc[df["country"] == 'Singapore']
+sm_df = new_df.loc[df["type"] == "Movie"]
+#sm_df is singapore movies df
+sm_df = sm_df.reset_index(drop=True)
+print(sm_df)
+
+index = ['TV-PG', 'TV-MA', 'R']
+movies = [1, 4, 1]
+sm_df = pd.DataFrame({'movies': movies}, index=index)
+
+
+ax = sm_df.plot.bar(rot=0)
